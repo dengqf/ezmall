@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\Home\apache-maven-3.0.4\repos\mysql\mysql-connector-java\5.1.18\mysql-connector-java-5.1.18.jar"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://182.92.184.230:3306/mall?characterEncoding=utf-8"
+                        userId="root"
+                        password="bgapps100">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- generate Model -->
+        <javaModelGenerator targetPackage="com.ezmall.model"
+                            targetProject="D:\MyWork\ezmall\mall-model\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+
+        <!-- generate xml -->
+        <sqlMapGenerator targetPackage="com.ezmall.mapper"
+                         targetProject="D:\MyWork\ezmall\mall-server\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- generate Mapper -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ezmall.mapper"
+                             targetProject="D:\MyWork\ezmall\mall-server\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <table schema="" tableName="tbl_admin" domainObjectName="Admin"/>
+        <!--<table schema="" tableName="leavemessage" domainObjectName="Leavemessage"></table>-->
+
+    </context>
+</generatorConfiguration>

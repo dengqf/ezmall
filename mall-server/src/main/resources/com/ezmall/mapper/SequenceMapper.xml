@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezmall.mapper.SequenceMapper">
+
+    <select id="getCategoryNo" resultType="String">
+		select func_sequence_nextval('category_no_seq')
+	</select>
+
+    <select id="getBrandNo" resultType="String">
+		select func_sequence_nextval('brand_no_seq')
+	</select>
+
+    <select id="getGoodsNo" resultType="String">
+		select func_sequence_nextval('goods_no_seq')
+	</select>
+
+    <select id="getPropItemNo" resultType="String">
+		select func_sequence_nextval('propitem_no_seq')
+	</select>
+    <select id="getPropValueNo" resultType="String">
+		select func_sequence_nextval('propvalue_no_seq')
+	</select>
+
+    <select id="getOrderNo" resultType="String">
+		select func_sequence_nextval('order_no_seq')
+	</select>
+</mapper>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ezmall</groupId>
+        <artifactId>ezmall-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>mall-server</artifactId>
+    <groupId>mall-server</groupId>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
+    <name>mall-server</name>
+    <url>http://maven.apache.org</url>
+    <properties>
+        <shiro.version>1.2.3</shiro.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.ezmall</groupId>
+            <artifactId>mall-api</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+        </dependency>
+
+
+        <!-- logging -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
+
+        <!--mybatis-->
+        <dependency>
+            <groupId>org.mybatis.caches</groupId>
+            <artifactId>mybatis-ehcache</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.1.1</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-jdbc</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <!--Shiro END-->
+
+        <!-- Spring framework -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+
+        </dependency>
+
+        <!-- Spring framework END-->
+
+        <!--<dependency>-->
+        <!--<groupId>org.hibernate</groupId>-->
+        <!--<artifactId>hibernate-validator</artifactId>-->
+        <!--<version>5.0.1.Final</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+         </dependency>
+        <dependency>
+            <groupId>jackson-all</groupId>
+            <artifactId>jackson-all</artifactId>
+            <version>1.8.5</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.codehaus.jackson</groupId>-->
+            <!--<artifactId>jackson-mapper-asl</artifactId>-->
+            <!--<version>1.8.5</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+
+            <!--<groupId>org.codehaus.jackson</groupId>-->
+
+            <!--<artifactId>jackson-mapper-asl</artifactId>-->
+
+            <!--<version>1.8.5</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.18</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.0.1B</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>2.1_3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.20</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ezmorph</groupId>
+            <artifactId>ezmorph</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+        <!--hessian-->
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>4.0.7</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>jmagick</groupId>
+            <artifactId>jmagick</artifactId>
+            <version>6.6.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+        <!--CSV-->
+        <!--<dependency>-->
+        <!--<groupId>net.sf.opencsv</groupId>-->
+        <!--<artifactId>opencsv</artifactId>-->
+        <!--<version>1.8</version>-->
+        <!--</dependency>-->
+
+        <!--EXCEL-->
+        <!--<dependency>-->
+        <!--<groupId>net.sourceforge.jexcelapi</groupId>-->
+        <!--<artifactId>jxl</artifactId>-->
+        <!--<version>2.6.10</version>-->
+        <!--</dependency>-->
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.9</version>
+                <configuration>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8080</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
+                    <contextPath>/ezmall</contextPath>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <jettyEnvXml>src/main/resources/jetty-env.xml</jettyEnvXml>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>commons-dbcp</groupId>
+                        <artifactId>commons-dbcp</artifactId>
+                        <version>1.2.2</version>
+                        <type>jar</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.18</version>
+                        <type>jar</type>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>javax.transaction</groupId>
+                        <artifactId>jta</artifactId>
+                        <version>1.0.1B</version>
+                        <type>jar</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jboss.netty</groupId>
+                        <artifactId>netty</artifactId>
+                        <version>3.2.5.Final</version>
+                        <type>jar</type>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!--mybatis create -->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.1</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>ezmall</finalName>
+    </build>
+    <repositories>
+        <repository>
+            <id>maven-net-cn</id>
+            <name>Maven China Mirror</name>
+            <url>http://a.360appcn.com:8680/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>cdc-plugin-respository</id>
+            <name>cdc-plugin-respository</name>
+            <url>http://a.360appcn.com:8680/nexus/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>

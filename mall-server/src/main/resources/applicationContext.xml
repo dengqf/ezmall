@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+	http://www.springframework.org/schema/jee  http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+	http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+       default-lazy-init="true">
+
+    <description>Spring公共配置</description>
+
+    <!--开启注解 -->
+    <context:annotation-config/>
+
+    <!-- 开启自动切面代理 -->
+    <aop:aspectj-autoproxy/>
+
+    <context:component-scan base-package="com.ezmall">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- 定义受环境影响易变的变量 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <!-- 标准配置 -->
+                <value>classpath*:/config.properties</value>
+                <!-- 本地开发环境配置 -->
+                <value>file:/d:/yougouconf/pcconf/*.properties</value>
+                <!-- 服务器生产环境配置 -->
+                <value>file:/etc/yougouconf/pcconf/*.properties</value>
+            </list>
+        </property>
+        <!--property name="ignoreUnresolvablePlaceholders" value="true" / -->
+    </bean>
+
+
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+    <bean name="mapperScannerConfig" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ezmall.mapper"/>
+        <property name="sqlSessionTemplateBeanName" value="sqlSession"/>
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/ezmall"/>
+    </bean>
+    
+    
+    <!-- thrift server config -->
+    <!-- 声明多个server，并将其关联到该list中，以便监听器自动启动 -->  
+    <util:list id="thriftServerList">  
+        <ref bean="userProxy01" />  
+    </util:list>  
+      
+    <bean id="userProxy01" class="com.ezmall.server.ThriftServerProxy">  
+        <property name="port" value="8687"/>
+		<property name="serviceInterface" value="com.ezmall.server.api.GoodsServiceApi"/>
+		<property name="serviceImplObject" ref="goodsThriftApi"/>	   
+    </bean>  
+    
+    <bean id="applicationContextProvder" class="com.ezmall.utils.ApplicationContextProvider"/>
+    
+
+</beans>

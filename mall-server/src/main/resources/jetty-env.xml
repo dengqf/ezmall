@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure class="org.mortbay.jetty.webapp.WebAppContext">
+    <New id="sample" class="org.mortbay.jetty.plus.naming.Resource">
+        <Arg>jdbc/ezmall</Arg>
+        <Arg>
+            <New class="org.apache.commons.dbcp.BasicDataSource">
+                <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
+                <Set name="url">jdbc:mysql://182.92.184.230:3306/mall?characterEncoding=utf-8</Set>
+                <Set name="username">root</Set>
+                <Set name="password">bgapps100</Set>
+            </New>
+        </Arg>
+    </New>
+</Configure>

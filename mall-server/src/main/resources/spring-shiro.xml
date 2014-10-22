@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/gms/toLogin.html"/>
+        <property name="filterChainDefinitions">
+            <value>
+                / = anon
+                /gms/login.html = anon
+                /gms/toLogin.html = anon
+                /gms/** = authc
+            </value>
+        </property>
+
+    </bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="jdbcRealm"/>
+        <property name="cacheManager" ref="cacheManager"/>
+    </bean>
+
+    <bean id="jdbcRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="authenticationQuery" value="select password from tbl_admin where username = ?"/>
+        <property name="userRolesQuery"
+                  value="select r.role_name from tbl_admin u, tbl_admin_role_rp ur, tbl_role r where u.id = ur.user_id and r.id = ur.role_id and u.username = ?"/>
+        <property name="permissionsQuery"
+                  value="select p.permission_name from tbl_role r, tbl_role_permission_rp rp, tbl_permission p where r.id = rp.role_id and p.id = rp.permission_id and r.role_name = ?"/>
+        <property name="permissionsLookupEnabled" value="true"/>
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="credentialsMatcher" ref="passwordMatcher"/>
+    </bean>
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
+
+    <bean id="passwordMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher"/>
+
+    <bean id="passwordService" class="org.apache.shiro.authc.credential.DefaultPasswordService"/>
+
+    <!--<bean id="freemakerCongfig"-->
+    <!--class="com.jagregory.shiro.freemarker.ShiroTagFreeMarkerConfigurer">-->
+    <!--<property name="templateLoaderPath" value="/WEB-INF/views/" />-->
+    <!--<property name="freemarkerSettings">-->
+    <!--<props>-->
+    <!--<prop key="defaultEncoding">UTF-8</prop>-->
+    <!--<prop key="classic_compatible">true</prop>-->
+    <!--</props>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+</beans>
