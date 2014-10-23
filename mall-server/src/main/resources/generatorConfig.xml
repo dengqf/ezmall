@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <classPathEntry
-            location="D:\Home\apache-maven-3.0.4\repos\mysql\mysql-connector-java\5.1.18\mysql-connector-java-5.1.18.jar"/>
+            location="E:\home\apache-maven-3.1.0\repository\mysql\mysql-connector-java\5.1.18\mysql-connector-java-5.1.18.jar"/>
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -20,7 +20,7 @@
 
         <!-- generate Model -->
         <javaModelGenerator targetPackage="com.ezmall.model"
-                            targetProject="D:\MyWork\ezmall\mall-model\src\main\java">
+                            targetProject="E:\git\ezmall\mall-model\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -28,18 +28,18 @@
 
         <!-- generate xml -->
         <sqlMapGenerator targetPackage="com.ezmall.mapper"
-                         targetProject="D:\MyWork\ezmall\mall-server\src\main\resources">
+                         targetProject="E:\git\ezmall\mall-server\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- generate Mapper -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.ezmall.mapper"
-                             targetProject="D:\MyWork\ezmall\mall-server\src\main\java">
+                             targetProject="E:\git\ezmall\mall-server\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
-        <table schema="" tableName="tbl_admin" domainObjectName="Admin"/>
+        <table schema="" tableName="tbl_goods_info" domainObjectName="Goods"/>
         <!--<table schema="" tableName="leavemessage" domainObjectName="Leavemessage"></table>-->
 
     </context>

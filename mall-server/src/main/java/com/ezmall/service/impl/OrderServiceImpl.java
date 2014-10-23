@@ -354,7 +354,7 @@ public class OrderServiceImpl implements IOrderService {
             if (null == express) {
                 express = 0.0;
             }
-            Integer giveScore = goods.getGiveScore();
+            Integer giveScore = goods.getGiftScore();
             if (null == giveScore) {
                 giveScore = 0;
             }

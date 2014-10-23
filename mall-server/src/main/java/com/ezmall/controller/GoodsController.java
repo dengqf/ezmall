@@ -158,7 +158,6 @@ public class GoodsController {
             }
             goods.setNo(obj.getNo());
             goods.setUpdateDate(today);
-            goods.setThirdDomain(obj.getThirdDomain());
             //如果品牌发生了变化，先复制图片去新的目录，再处理
             if (!StringUtils.equals(goods.getBrandNo(), obj.getBrandNo())) {
                 String result = ImgUploadUtil.dealGoodsPicByBrandNo(obj, goods);

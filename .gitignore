@@ -6,4 +6,7 @@
 *.war
 *.ear
 *.class
-mall-server/src/main/resources/generatorConfig.xml
+mall-api/target/
+mall-model/target/
+mall-server/target/
+

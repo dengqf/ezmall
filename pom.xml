@@ -185,15 +185,45 @@
     <distributionManagement>
         <repository>
             <id>releases</id>
-            <name>360appcn Releases</name>
+            <name>deployment</name>
             <url>http://a.360appcn.com:8680/nexus/content/repositories/releases</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
-            <name>360appcn Snapshots</name>
+            <name>deployment</name>
             <url>http://a.360appcn.com:8680/nexus/content/repositories/snapshots</url>
             <!--<url>http://localhost:9081/nexus/content/repositories/snapshots</url>-->
         </snapshotRepository>
 
     </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>my-repo</id>
+            <name>my repository</name>
+            <url>http://a.360appcn.com:8680/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>my-repo</id>
+            <name>my repository</name>
+            <url>http://a.360appcn.com:8680/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+
+    </pluginRepositories>
+
+
 </project>

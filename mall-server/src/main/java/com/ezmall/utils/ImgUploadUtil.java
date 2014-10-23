@@ -51,7 +51,7 @@ public class ImgUploadUtil {
 
         MultipartFile file = multipartRequest.getFile(param);
 
-        if (file!=null&&ImageHelp.isValidImageName(file.getOriginalFilename())) {
+        if (file != null && ImageHelp.isValidImageName(file.getOriginalFilename())) {
             if (file.getSize() > CommonConstrant.IMG_MAX_SIZE) {
                 return "文件大小不能超过100K";
             }
@@ -137,10 +137,10 @@ public class ImgUploadUtil {
     public static String uploadGoodsImage(HttpServletRequest request, Goods goods, String param) {
         //文件分割符
         String separator = System.getProperty("file.separator");
-        String thirdDomain = goods.getThirdDomain();
-        if (StringUtils.isBlank(thirdDomain)) {
-            thirdDomain = CommonConstrant.DOMAIN_NAME;
-        }
+//        String thirdDomain = goods.getThirdDomain();
+//        if (StringUtils.isBlank(thirdDomain)) {
+//            thirdDomain = CommonConstrant.DOMAIN_NAME;
+//        }
 
         String fileUrl = getUploadPath() + separator + getGoodsPicUrl(goods);
         System.out.println("上传图片的地址是:" + fileUrl);
@@ -251,11 +251,8 @@ public class ImgUploadUtil {
 
     public static String getGoodsPicUrl(Goods goods) {
         StringBuffer buffer = new StringBuffer("upload/");
-        String thirdDomain = goods.getThirdDomain();
-        if (StringUtils.isBlank(thirdDomain)) {
-            thirdDomain = CommonConstrant.DOMAIN_NAME;
-        }
-        buffer.append("goods").append("/").append(thirdDomain).append("/").append(goods.getBrandNo()).append("/").append(goods.getNo()).append(".jpeg");
+
+        buffer.append("goods").append("/").append(goods.getBrandNo()).append("/").append(goods.getNo()).append(".jpeg");
         return buffer.toString();
     }
 

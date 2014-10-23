@@ -52,13 +52,9 @@ public class GoodsThriftApi implements Iface {
         gd.setSellPrice(tg.getSellPrice());
         gd.setMarketPrice(tg.getMarketPrice());
         gd.setCurrencyType(tg.getCurrencyType());
-        gd.setThirdNo(tg.getThirdNo());
-        gd.setThirdLink(tg.getThirdLink());
+
         gd.setGoodsDesc(tg.getGoodsDesc());
-        gd.setThirdDomain(tg.getThirdDomain());
-        gd.setThirdId(tg.getThirdId());
-        gd.setThirdCol1(tg.getThirdCol1());
-        gd.setThirdCol2(tg.getThirdCol2());
+
 
 		dto.setBrandEnglishName(goods.getBrandEnglishName());
 		dto.setBrandName(goods.getBrandName());
@@ -72,10 +68,10 @@ public class GoodsThriftApi implements Iface {
         try{
             ret= goodsService.importGoods(dto);
         }catch (Exception e){
-            System.out.println("抓取数据异常:" + gd.getThirdNo());
+
             ret=new ResultDto();
             ret.setSuccess(false);
-            ret.setMessage(gd.getThirdNo()+"抓取数据异常:" + e.getMessage());
+
         }
 
 		return ret.getMessage();
@@ -86,13 +82,13 @@ public class GoodsThriftApi implements Iface {
 	public boolean isGoodExists(String thirdNo, String thridDomain)
 			throws TException {
 		// TODO Auto-generated method stub
-		return goodsService.isGoodImport(thirdNo,thridDomain)!=null;
+		return false;
 	}
 
 	@Override
 	public boolean checkThirdId(String thirdId, String thridDomain)
 			throws TException {
-        return goodsService.isGoodImportByThirdId(thirdId,thridDomain)!=null;
+        return false;
 	}
 
 

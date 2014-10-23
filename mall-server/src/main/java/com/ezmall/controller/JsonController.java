@@ -119,38 +119,6 @@ public class JsonController {
 
     }
 
-    /**
-     * 商品比价页 (全球)
-     * 按商品名称对比
-     *
-     * @param no
-     * @param response
-     */
-    @ResponseBody
-    @RequestMapping(value = "goodsTopJson.html")
-    public void goodsTopJson(String no, Integer pageSize, HttpServletResponse response) {
-        Goods goods = goodsService.getGoodsByNo(no);
-        GoodsQueryVo vo = new GoodsQueryVo();
-        vo.setGoodsName(goods.getName());
-        List<Goods> list = goodsService.getGoodsTop(vo, pageSize);
-
-        createJsonWithObject(list, response);
-
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "goodsTopInCountryJson.html")
-    public void goodsTopJson(String no, String country, Integer pageSize, HttpServletResponse response) {
-        Goods goods = goodsService.getGoodsByNo(no);
-        GoodsQueryVo vo = new GoodsQueryVo();
-        vo.setGoodsName(goods.getName());
-        String _country = decode(country);
-        vo.setCountry(_country);
-        List<Goods> list = goodsService.getGoodsTopInCountry(vo, pageSize);
-
-        createJsonWithObject(list, response);
-
-    }
 
     /**
      * 分类列表
@@ -491,50 +459,7 @@ public class JsonController {
     }
 
 
-    @ResponseBody
-    @RequestMapping(value = "getGoodsListByAreaJson.html")
-    public void getGoodsListByAreaJson(String country, String city, String mall, Integer pageSize, Integer pageNo, String orderType, String sort, HttpServletResponse response) {
-        System.out.println("$$$$$$$$$$$$$$$" + country + "#" + city + "#" + mall);
-        String _country = decode(country);
-        String _city = decode(city);
-        String _mall = decode(mall);
-        GoodsQueryVo vo = new GoodsQueryVo();
-        if (StringUtils.isNotBlank(_country)) {
-            vo.setCountry(_country);
-        }
-        if (StringUtils.isNotBlank(_city)) {
-            vo.setCity(_city);
-        }
-        if (StringUtils.isNotBlank(_mall)) {
-            vo.setMall(_mall);
-        }
 
-        System.out.println("@@@@@@@@@@@@@@@@==" + _country + "#" + _city + "#" + _mall);
-        //TODO 暂时取消
-//        vo.setStatus(CommonConstrant.GOODS_STATUS_ONSALE);
-
-        if (StringUtils.equalsIgnoreCase(CommonConstrant.SORT_ASC, sort)) {
-            vo.setSort(CommonConstrant.SORT_ASC);
-        } else {
-            vo.setSort(CommonConstrant.SORT_DESC);
-        }
-        if (StringUtils.isNotBlank(orderType)) {
-            //销售价格
-            if (StringUtils.equals("1", orderType)) {
-                vo.setOrderColumn("SELL_PRICE");
-            } else if (StringUtils.equals("2", orderType)) {  //销量(暂时没有)
-                //TODO
-                vo.setOrderColumn("UPDATE_DATE");
-            } else {
-                vo.setOrderColumn("UPDATE_DATE");//
-            }
-        }
-        Query query = new Query();
-        query.setPage(pageNo);
-        query.setPageSize(pageSize);
-        PageData<Goods> pageData = goodsService.getGoodsPageData(vo, query);
-        createJson(pageData, response);
-    }
 
     /**
      * 得到品牌下的2级分类

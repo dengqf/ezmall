@@ -239,15 +239,11 @@ public class GoodsServiceImpl implements IGoodsService {
         if (StringUtils.isNotBlank(vo.getCategoryNo())) {
             criteria.andCategoryNoEqualTo(vo.getCategoryNo());
         }
-        if (StringUtils.isNotBlank(vo.getCountry())) {
-            criteria.andCountryEqualTo(vo.getCountry());
-        }
+
         if (StringUtils.isNotBlank(vo.getCity())) {
             criteria.andCityEqualTo(vo.getCity());
         }
-        if (StringUtils.isNotBlank(vo.getMall())) {
-            criteria.andMallEqualTo(vo.getMall());
-        }
+
         if (StringUtils.isNotBlank(vo.getGoodsName())) {
             criteria.andNameLike("%" + vo.getGoodsName() + "%");
         }
@@ -347,73 +343,6 @@ public class GoodsServiceImpl implements IGoodsService {
             goodsPropRpMapper.insertSelective(rp);
         }
         return list.size();
-    }
-
-    @Override
-    public Goods isGoodImport(String thirdNo, String thirdDomain) {
-        GoodsExample example = new GoodsExample();
-        example.or().andThirdNoEqualTo(thirdNo).andThirdDomainEqualTo(thirdDomain).andValidFlagEqualTo(CommonConstrant.VALID_FLAG_YES);
-        Goods goods = CommonUtil.getFirstObject(goodsMapper.selectByExample(example));
-        return goods;
-    }
-
-    @Override
-    public Goods isGoodImportByThirdId(String thirdID, String thirdDomain) {
-        GoodsExample example = new GoodsExample();
-        example.or().andThirdIdEqualTo(thirdID).andThirdDomainEqualTo(thirdDomain).andValidFlagEqualTo(CommonConstrant.VALID_FLAG_YES);
-        Goods goods = CommonUtil.getFirstObject(goodsMapper.selectByExample(example));
-        return goods;
-    }
-
-    @Override
-    public List<Goods> getGoodsTop(GoodsQueryVo vo, Integer size) {
-        List<Area> list = goodsMapper.getAllCountryList();
-        List<Goods> goodsList = new ArrayList<Goods>();
-        for (Area area : list) {
-            if (area == null) {
-                continue;
-            }
-            String country = area.getCountry();
-            if (StringUtils.isBlank(country)) {
-                continue;
-            }
-            Goods goods = getMinPriceGoodsByCountry(country, vo.getGoodsName());
-            if (goods != null) {
-                goodsList.add(goods);
-            }
-        }
-        Collections.sort(goodsList, new ComparatorGoods());
-        if(goodsList.size()<size){
-            return goodsList;
-        }
-        return goodsList.subList(0, size);
-    }
-
-    @Override
-    public List<Goods> getGoodsTopInCountry(GoodsQueryVo vo, Integer size) {
-        GoodsExample example = new GoodsExample();
-        GoodsExample.Criteria criteria = example.or();
-        criteria.andValidFlagEqualTo(CommonConstrant.VALID_FLAG_YES);
-
-        if (StringUtils.isNotBlank(vo.getCountry())) {
-            criteria.andCountryEqualTo(vo.getCountry());
-        }
-        if (StringUtils.isNotBlank(vo.getGoodsName())) {
-            criteria.andNameEqualTo(vo.getGoodsName());
-        }
-        example.setOrderByClause(" sell_price asc limit " + size);
-        return goodsMapper.selectByExample(example);
-    }
-
-    @Override
-    public Goods getMinPriceGoodsByCountry(String country, String name) {
-        if (StringUtils.isBlank(country)) {
-            return null;
-        }
-        GoodsExample example = new GoodsExample();
-        example.or().andCountryEqualTo(country).andNameEqualTo(name);
-        example.setOrderByClause(" sell_price asc limit 1");
-        return CommonUtil.getFirstObject(goodsMapper.selectByExample(example));
     }
 
 

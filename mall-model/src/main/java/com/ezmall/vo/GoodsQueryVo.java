@@ -25,9 +25,9 @@ public class GoodsQueryVo {
     String secondCategory;
     String thirdCategory;
     String merchantName;
-    String country;
+
     String city;
-    String mall;
+
 
     String orderColumn;//排序字段
     String sort;//排序
@@ -120,13 +120,7 @@ public class GoodsQueryVo {
         this.sort = sort;
     }
 
-    public String getCountry() {
-        return country;
-    }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     public String getCity() {
         return city;
@@ -136,11 +130,5 @@ public class GoodsQueryVo {
         this.city = city;
     }
 
-    public String getMall() {
-        return mall;
-    }
 
-    public void setMall(String mall) {
-        this.mall = mall;
-    }
 }

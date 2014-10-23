@@ -72,7 +72,7 @@ public class IGoodsBaseApiTest extends BaseTestCase {
         propMap.put("成分3", "天然植物3");
         propMap.put("成分4", "天然植物5");
 
-        goodsBaseApi.insertGoods(goodsMap, propMap);
+//        goodsBaseApi.insertGoods(goodsMap, propMap);
     }
 
     public void testStre() {

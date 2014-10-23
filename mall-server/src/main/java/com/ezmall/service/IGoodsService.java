@@ -99,38 +99,8 @@ public interface IGoodsService {
 
     Integer addPropToGoods(String goodsNo,List<GoodsPropRp> list);
 
-    /**
-     * 判断商品编号是否已经被导入
-     * @param thirdNo
-     * @param thirdDomain
-     * @return
-     */
-    Goods isGoodImport(String thirdNo,String thirdDomain);
 
-    /**
-     * 判断第三方商品ID是否已经被导入
-     * @param thirdID
-     * @param thirdDomain
-     * @return
-     */
-    Goods isGoodImportByThirdId(String thirdID,String thirdDomain);
 
-    /**
-     * 得到最低的几个国家的商品信息
-     * @param vo
-     * @param size
-     * @return
-     */
-    List<Goods> getGoodsTop(GoodsQueryVo vo,Integer size);
 
-    /**
-     * 得到某个商品在某个国家内价格最低的商品信息
-     * @param vo
-     * @param size
-     * @return
-     */
-    List<Goods> getGoodsTopInCountry(GoodsQueryVo vo,Integer size);
-
-    Goods getMinPriceGoodsByCountry(String country,String name);
 
 }
