@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.ezmall</groupId>
             <artifactId>mall-api</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>10.10.1-SNAPSHOT</version>
         </dependency>
 
 

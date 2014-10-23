@@ -9,7 +9,7 @@
     </parent>
     <artifactId>mall-model</artifactId>
     <name>mall-model</name>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>10.10.1-SNAPSHOT</version>
     <url>http://maven.apache.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
